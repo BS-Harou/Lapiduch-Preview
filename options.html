@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Forrst Speed Dial Notifier - options</title>
+		<link rel="stylesheet" href="styles/options.css">
+		<script src="scripts/options.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1><span id="widget-name">Lapiduch Preview</span></h1>
+			<h2>by <a href="#" id="widget-author">BS-Harou</a></h2>
+		</header>
+		<section>
+				<fieldset>
+						<legend>Refresh</legend>
+						<input type="number" name="interval" id="interval" min="1" /> min.
+				</fieldset>
+
+				
+
+				<fieldset>
+					<legend>Autologin</legend>
+					<input type="text" id="nick" placeholder="Zadejte přezdívku"> | 
+					<input type="password" id="pass" placeholder="Zadejte heslo">
+					<p>Automatické přihlášení může proběhnout maximálně jednou za 30 minut.</p>
+				</fieldset>
+
+				<fieldset>
+					<legend>Nahrát teď</legend>
+					<button id="refresh">Nahrát</button>
+				</fieldset>
+				
+				<div class="buttons view-mode">
+					<input type="button" onclick="window.close();" value="Done"/>
+				</div>
+		</section>
+	</body>
+</html>

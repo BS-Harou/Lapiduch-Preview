@@ -1,0 +1,48 @@
+html, body {
+	height: 100%;
+	width: 100%;
+}
+body {
+	margin: 0px;
+	background: white;
+}
+header {
+	background: #6E95CF;
+	width: 100%;
+}
+
+header img {
+	display: block;
+	margin: 0 auto;
+	width: 90%;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+td {
+	font-family: Arial;
+	font-size: 13px;
+	padding: 3px 5px;
+	margin: 0;
+	background: lightblue;
+}
+tr:nth-child(2n-1) td {
+	background: white;
+}
+
+td:nth-child(2) {
+	text-align: right;
+	color: red;
+	padding-right: 5px;
+}
+
+#kluby:empty {
+	text-align: center;
+	margin-top: 15px;
+	font-weight: bold;
+	font-size: 14px;
+	content: "Probíhá nahrávání"
+}
