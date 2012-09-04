@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 	<head>
+
 		<meta charset="utf-8">
 		<title>Lapiduch Preview</title>
 		<link rel="stylesheet" href="styles/sd.css">
@@ -10,7 +11,13 @@
 		<header>
 			<img src="images/logo.png">
 		</header>
+
+		<!-- Tables are evil, but until Opera supports Flexbox there isn't any other simple dynamic solution -->
 		<table id="kluby"></table>
+
+		<!-- ========================== -->
+		<!-- Templates & Bottom Loaders -->
+		<!-- ========================== -->
 
 		<script type="text/template" id="klub-template">
 			<td><%= nazev %></td><td><%= !pocet ? '' : '+' + pocet %></td>

@@ -1,25 +1,31 @@
-if ("jQuery" in this && jQuery.support) jQuery.support.cors = true;
+/*global jQuery, Backbone, widget, atob, $*/
 
-var cesty = {
-	nove: 'http://www.lapiduch.cz/index.php?mod=book&new=1',
-	nic: 'http://www.lapiduch.cz/index.php?mod=book'
+if ('jQuery' in this && jQuery.support) {
+	jQuery.support.cors = true;
 }
-
-var sd = opera.contexts.speeddial;
-sd.url = cesty.nove;
 
 JSON.saveParse = function(str) {
 	try {
-		return JSON.parse(atob(str));
+		return JSON.parse( atob(str) );
 	} catch(ex) {
 		return null;
 	}
-}
+};
 
 /**
 * DOM CONTENT LOADED
 */
 $(function() {
+
+	var cesty = {
+		nove: 'http://www.lapiduch.cz/index.php?mod=book&new=1',
+		nic: 'http://www.lapiduch.cz/index.php?mod=book'
+	};
+
+	var sd = opera.contexts.speeddial;
+	sd.url = cesty.nove;
+
+
 	var Addon = {
 		fetch: function() {
 
@@ -44,7 +50,7 @@ $(function() {
 							
 							// set count to 0 for rows without new posts
 							var findCount = $(row).find('.L1p');
-							var count = findCount.html() ? parseInt(findCount.html().replace(/[^\d]/g, '')) : 0;
+							var count = findCount.html() ? parseInt(findCount.html().replace(/[^\d]/g, ''), 10) : 0;
 
 							celkem += count;
 							return { nazev: name, pocet: count };
@@ -83,8 +89,11 @@ $(function() {
 
 	function logMeIn() {
 		var autologin = JSON.saveParse(widget.preferences.autologin);
+
 		if (autologin && autologin.nick && autologin.pass && Date.now() - Addon.lastAutoLogin > 1800000) {
+
 			Addon.lastAutoLogin = Date.now();
+
 			$.post('http://www.lapiduch.cz/log.php', {
 				user: autologin.nick,
 				pass: autologin.pass,
@@ -92,6 +101,7 @@ $(function() {
 			}).success(function() {
 				refreshWidget();
 			});
+
 			return true;
 		}
 		return false;
@@ -103,14 +113,14 @@ $(function() {
 			return {
 				nazev: '<unknown name>',
 				pocet: 0
-			}
+			};
 		}
 	});
 
 	var kluby = new (Backbone.Collection.extend({
 		model: Klub,
 		comparator: function(model) {
-			return [!model.get('pocet'), model.get('pocet')];
+			return [ !model.get('pocet'), model.get('pocet') ];
 		}
 	}));
 
@@ -136,6 +146,7 @@ $(function() {
 
 	var app = new (Backbone.View.extend({
 		initialize: function() {
+
 			kluby.on('add', this.addClub, this);
 			kluby.on('reset', this.addAll, this);
 
@@ -143,11 +154,12 @@ $(function() {
 			if (Addon.interval) {
 				clearInterval(Addon.interval);
 			}
+
 			Addon.interval = setInterval(Addon.fetch, getInter());
 		},
 
 		addClub: function(mod) {
-			mod = typeof mod == 'number' ? arguments[1] : mod;
+			mod = typeof mod === 'number' ? arguments[1] : mod;
 			var view = new KlubView({ model: mod });
 			$('#kluby').append(view.render().el);
 		},
@@ -160,7 +172,7 @@ $(function() {
 	}));
 
 	function getInter() {
-		return (parseInt(widget.preferences.interval) || 2) * 1000 * 60;
+		return (parseInt(widget.preferences.interval, 10) || 2) * 1000 * 60;
 	}
 
 	function refreshWidget() {
@@ -181,5 +193,6 @@ $(function() {
 				setTimeout(refreshWidget, 5000);
 				break;
 		}
-	}
+	};
+
 });
