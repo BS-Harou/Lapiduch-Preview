@@ -1,6 +1,9 @@
 html, body {
-	height: 100%;
-	width: 100%;
+	width: 310px;
+	max-width: 310px;
+	height: 230px;
+	max-height: 230px;
+	overflow: hidden;
 }
 body {
 	margin: 0px;

@@ -5,7 +5,8 @@ var cesty = {
 	nic: 'http://www.lapiduch.cz/index.php?mod=book'
 }
 
-var sd = opera.contexts.speeddial;
+
+var sd = this.opera ? opera.contexts.speeddial : {};
 sd.url = cesty.nove;
 
 JSON.saveParse = function(str) {
@@ -82,7 +83,7 @@ $(function() {
 	};
 
 	function logMeIn() {
-		var autologin = JSON.saveParse(widget.preferences.autologin);
+		var autologin = JSON.saveParse( localStorage.getItem('autologin') );
 		if (autologin && autologin.nick && autologin.pass && Date.now() - Addon.lastAutoLogin > 1800000) {
 			Addon.lastAutoLogin = Date.now();
 			$.post('http://www.lapiduch.cz/log.php', {
@@ -160,7 +161,7 @@ $(function() {
 	}));
 
 	function getInter() {
-		return (parseInt(widget.preferences.interval) || 2) * 1000 * 60;
+		return (parseInt( localStorage.getItem('interval') ) || 2) * 1000 * 60;
 	}
 
 	function refreshWidget() {
@@ -171,7 +172,7 @@ $(function() {
 		Addon.interval = setInterval(Addon.fetch, getInter());
 	}
 
-	opera.extension.onmessage = function(e) {
+	/*opera.extension.onmessage = function(e) {
 		switch (e.data.action) {
 			case 'refresh-now':
 				refreshWidget();
@@ -181,5 +182,5 @@ $(function() {
 				setTimeout(refreshWidget, 5000);
 				break;
 		}
-	}
+	}*/
 });

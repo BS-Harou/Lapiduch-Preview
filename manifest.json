@@ -1,19 +1,31 @@
 {
 	"name": "My Extension",
-	"version": "alpha",
-	"manifest_version": 2,
+	"version": "1",
+	"manifest_version": 1,
 
-	// Recommended
+	
 	"description": "Přehled oblíbených klubů v Chromu!",
+
 	"icons": {
 		"128": "icons/icon64.png"
 	},
-	"default_locale": "cs",
 
 	"browser_action": {
 		"default_icon": "icons/icon64.png",
 		"default_title": "Lapiduch Preview",
 		"default_popup": "popup.html"
 	},
+
+	"key": "lapiduch",
+
+	"permissions": [
+		"http://www.lapiduch.cz/*",
+		"http://lapiduch.cz/*",
+		"http://cdnjs.cloudflare.com/*"
+	],
+
+	"options_page": "options.html"
+
+
 
 }

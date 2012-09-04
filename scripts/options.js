@@ -1,7 +1,5 @@
 var
-	d = document,
-	o  = opera,
-	w = widget
+	d = document
 ;
 
 JSON.saveParse = function(str) {
@@ -14,7 +12,7 @@ JSON.saveParse = function(str) {
 
 function init() {
 	var interval = d.getElementById('interval');
-	interval.value = w.preferences.interval || 2;
+	interval.value = localStorage.getItem('interval') || 2;
 	interval.addEventListener('change', handleInterval, false);
 
 	var refresh = d.getElementById('refresh');
@@ -22,7 +20,7 @@ function init() {
 
 	var nick = d.getElementById('nick');
 	var pass = d.getElementById('pass');
-	var autologin = JSON.saveParse(w.preferences.autologin);
+	var autologin = JSON.saveParse( localStorage.getItem('autologin') );
 	if (autologin) {
 		nick.value = autologin.nick || '';
 		pass.value = autologin.pass || '';
@@ -32,9 +30,9 @@ function init() {
 }
 
 function handleChange() {
-	var autologin = JSON.saveParse(w.preferences.autologin) || {};
+	var autologin = JSON.saveParse( localStorage.getItem('autologin') ) || {};
 	autologin[this.id] = this.value;
-	w.preferences.autologin = btoa(JSON.stringify(autologin));
+	localStorage.setItem('autologin', btoa(JSON.stringify(autologin)));
 }
 
 function handleInterval() {
@@ -42,11 +40,11 @@ function handleInterval() {
 	if (val < 1) {
 		val = 1;
 	}
-	w.preferences.interval = val;
+	localStorage.setItem('interval', val);
 }
 
 function handleRefresh() {
-	o.extension.postMessage({ action: 'refresh-now' });
+	//o.extension.postMessage({ action: 'refresh-now' });
 }
 
 d.addEventListener('DOMContentLoaded', init, false);
