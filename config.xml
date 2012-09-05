@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" id="extension:lapiduch" defaultlocale="cs" viewmodes="minimized">
 
-	<name short="Forrst notifier">Lapiduch Preview</name>
+	<name short="Lapiduch Preview">Lapiduch Preview</name>
 	<description>Přehled oblíbených klubů ve speed dialu Opery!</description>
 	<author href="http://my.opera.com/BS-Harou/blog">BS-Harou (Martin Kadlec)</author>
 	<icon src="icons/icon64.png"/>

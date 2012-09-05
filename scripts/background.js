@@ -35,7 +35,7 @@ $(function() {
 			
 			$.ajax({
 				url: 'http://www.lapiduch.cz/index.php?mod=book',
-				// Lapiduch does not have charset in content-type header - overrride to prevent wrong char mapping
+				// Lapiduch does not have charset in content-type header - override to prevent wrong char mapping
 				mimeType: 'text/html;charset=Windows-1250',
 				success: function(data) {
 
