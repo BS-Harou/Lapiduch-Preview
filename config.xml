@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="extension:lapiduch" defaultlocale="cs" viewmodes="minimized">
+<widget xmlns="http://www.w3.org/ns/widgets" id="http://www.lapiduch.cz" defaultlocale="cs" viewmodes="minimized">
 
 	<name short="Lapiduch Preview">Lapiduch Preview</name>
 	<description>Přehled oblíbených klubů ve speed dialu Opery!</description>

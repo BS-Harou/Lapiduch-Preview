@@ -17,6 +17,7 @@ JSON.saveParse = function(str) {
 */
 $(function() {
 
+	// cesty (czech) = routs / url pathes (english) :)
 	var cesty = {
 		nove: 'http://www.lapiduch.cz/index.php?mod=book&new=1',
 		nic: 'http://www.lapiduch.cz/index.php?mod=book'
@@ -27,6 +28,8 @@ $(function() {
 
 
 	var Addon = {
+
+		// I should probably override Backbone.sync instead of using my own fn, but what the hell...
 		fetch: function() {
 
 			if ($('#kluby').html()) {
@@ -75,7 +78,6 @@ $(function() {
 					}
 
 					kluby.reset(models);
-					//kluby.sort();
 				},
 				error: function(err, type, msg) {
 					sd.title = 'Nastala chyba - asi jste offline';

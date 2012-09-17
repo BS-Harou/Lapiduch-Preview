@@ -4,10 +4,9 @@
 // ==/UserScript==
 
 /**
-* Smyslem toho skriptu je, aby se po přihlášení automaticky
-* začali nahrávat kluby do položky v rychlém přístupu
+* This script is supposed to cause immidiate SD item update
+* when user logs in to www.lapiduch.cz
 */
-
 
 document.addEventListener('DOMContentLoaded', function() {
 	var but = document.querySelector("input[value='Vstoupit!']");
