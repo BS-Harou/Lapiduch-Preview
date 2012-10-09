@@ -142,7 +142,7 @@ $(function() {
 
 		remove: function() {
 			this.$el.remove();
-			this.model.destroy({ silent: true });
+			this.model.remove();
 		}
 	});
 
